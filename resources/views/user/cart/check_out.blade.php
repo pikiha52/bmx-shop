@@ -84,6 +84,7 @@
                                     <input type="text" class="hidden" name="price" id="price" value="{{ $check->part['price'] }}">
                                     <div class="input-box hidden"><label>Id Parts</label>
                                         <input type="hidden" name="parts_id" value="{{$check->parts_id}}">
+                                        <input type="hidden" name="check_id" value="{{$check->id}}">
                                     </div>
                                     @endforeach
                                 </ul>

@@ -158,4 +158,5 @@ class CheckoutController extends Controller
             return redirect('/checkouts/index');
         }
     }
+
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Addres;
 use App\Models\Order;
 use App\Models\Cart;
+use App\Models\Checkout;
 use App\Models\Part;
 use App\Models\User;
 use App\Services\Midtrans\CreateSnapTokenService;
@@ -63,7 +64,14 @@ class OrdersController extends Controller
             'payment_status' => 1
         ]);
 
+        $check_id = $request->input('check_id');
+        $delete = [
+            'id' => $check_id
+        ];
+        Checkout::where('id', $check_id)->delete();
+        Cart::where('user_id', session('id'))->delete();
+
         Session::flash('success', 'Pesanan berhasil dibuat, Silahkan lakukan pembayaran!');
-        return redirect('/order/detail/'. $id);
+        return redirect('/order/detail/' . $id);
     }
 }

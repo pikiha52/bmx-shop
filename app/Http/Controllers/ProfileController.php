@@ -23,7 +23,7 @@ class ProfileController extends Controller
                     'orders.*',
                     'parts.image', 'parts.merk',
                     'brands.name'
-                )->get();
+                )->orderByDesc('created_at')->limit(5)->get();
 
             return view('user.profile.index', compact('user', 'carts', 'count', 'orders'));
         }
